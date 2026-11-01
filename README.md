@@ -2,7 +2,7 @@
 
 صفحة حملة سويدية مستقلة، مبنية بملفات HTML/CSS/JavaScript مباشرة، مع صور الشركة الحقيقية ونفس نموذج Elfsight الأصلي. ملفات الموقع القابلة للنشر موجودة في `dist/`. لا توجد خطوة build أو مكتبات واجهة أو مفاتيح API مطلوبة.
 
-مستودع المشروع: [Don97MHD/artway-offert](https://github.com/Don97MHD/artway-offert). تحديثات هذا المشروع تُرفع إلى GitHub. بناءً على طلب المالك، لا تنشره أو تحدّثه على GPT Sites.
+مستودع المشروع: [Art-way/artway-offert](https://github.com/Art-way/artway-offert). تحديثات هذا المشروع تُرفع إلى GitHub. بناءً على طلب المالك، لا تنشره أو تحدّثه على GPT Sites.
 
 ## المعاينة المحلية
 
