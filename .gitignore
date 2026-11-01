@@ -1,4 +1,9 @@
 node_modules/
+.next/
+.vercel/
+out/
+*.tsbuildinfo
+.env*
 .openai/
 .sites-checkout/
 .sites-runtime/
