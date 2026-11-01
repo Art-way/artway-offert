@@ -12,13 +12,13 @@ const dmSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://artway-offert-drab.vercel.app"),
-  title: "Flytthjälp i Helsingborg & Skåne – Få fri offert | Artway AB",
+  title: "Flyttfirma i Helsingborg – Flytthjälp från 499 kr/tim | Artway AB",
   description:
-    "En trygg flytt börjar med rätt hjälp. Artway hjälper dig med flytt, packning, montering och flyttstädning. Få en kostnadsfri offert utan bindande bokning.",
+    "Flytthjälp från 499 kr/timme inkl. moms med lätt lastbil och två medarbetare. Artway hjälper dig med flytt, packning och flyttstädning. Begär en fri offert.",
   robots: { index: false, follow: false },
   icons: { icon: { url: "/assets/favicon.png", type: "image/png" } },
   openGraph: {
-    title: "Ny adress. En trygg start. | Artway AB",
+    title: "Flyttfirma i Helsingborg. En lättare flytt. | Artway AB",
     description:
       "Flytt, packning och flyttstädning. Ett team hela vägen. Få en kostnadsfri offert för din flytt.",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#123c31" };
+export const viewport: Viewport = { themeColor: "#f5f7eb" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

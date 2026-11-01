@@ -4,8 +4,52 @@ import { useEffect } from "react";
 
 const PLATFORM_URL = "https://static.elfsight.com/platform/platform.js";
 const WIDGET_CLASS = "elfsight-app-47186b70-4c2e-4d1e-9fc1-4ada8aabc106";
+const PRECONNECT_ORIGINS = [
+  "https://static.elfsight.com",
+  "https://core.service.elfsight.com",
+  "https://universe-static.elfsightcdn.com",
+];
+const LOADING_MESSAGE = "Förbereder ditt offertformulär…";
 const UNAVAILABLE_MESSAGE =
   "Formuläret tar lite längre tid att ladda. Använd länken nedan eller ring oss så hjälper vi dig.";
+
+function preconnectToElfsight() {
+  const existingOrigins = new Set(
+    Array.from(
+      document.querySelectorAll<HTMLLinkElement>('link[rel~="preconnect"]'),
+    ).map((link) => new URL(link.href, document.baseURI).origin),
+  );
+  PRECONNECT_ORIGINS.forEach((origin) => {
+    if (existingOrigins.has(origin)) return;
+    const link = document.createElement("link");
+    link.rel = "preconnect";
+    link.href = origin;
+    document.head.appendChild(link);
+    existingOrigins.add(origin);
+  });
+}
+
+function watchPlatformScript(script: HTMLScriptElement) {
+  if (script.dataset.artwayStatusWatch) return;
+  script.dataset.artwayStatusWatch = "true";
+  script.dataset.artwayElfsightState = "loading";
+  // Keep the network result on the script across effect cleanup/remounts.
+  // These one-shot listeners do not retain component or widget references.
+  script.addEventListener(
+    "load",
+    () => {
+      script.dataset.artwayElfsightState = "loaded";
+    },
+    { once: true },
+  );
+  script.addEventListener(
+    "error",
+    () => {
+      script.dataset.artwayElfsightState = "error";
+    },
+    { once: true },
+  );
+}
 
 export default function CampaignEffects() {
   useEffect(() => {
@@ -18,7 +62,10 @@ export default function CampaignEffects() {
     let active = true;
     let started = false;
     let loaded = false;
+    let retriedScript = false;
     let timeout: number | undefined;
+    let firstFrame: number | undefined;
+    let secondFrame: number | undefined;
     let platformScript: HTMLScriptElement | undefined;
     let formObserver: IntersectionObserver | undefined;
     let barObserver: IntersectionObserver | undefined;
@@ -52,34 +99,63 @@ export default function CampaignEffects() {
     });
     mutationObserver.observe(widget, { childList: true, subtree: true });
 
-    function loadForm() {
-      if (!active || started) return;
-      started = true;
+    function loadForm(allowRetry = false) {
+      if (!active || loaded) return;
       if (hasForm()) {
         ready();
         return;
       }
 
-      timeout = window.setTimeout(unavailable, 20_000);
       // Retain the provider script across Strict Mode effects and navigation.
       // Elfsight observes added widgets itself; do not manually initialize a
       // second instance or replace the original widget's delivery integration.
-      platformScript = Array.from(document.scripts).find(
+      const existingScript = Array.from(document.scripts).find(
         (script) => script.src === PLATFORM_URL,
       );
+      const scriptFailed =
+        existingScript?.dataset.artwayElfsightState === "error";
+      if (started && !scriptFailed) return;
+      if (scriptFailed && (!allowRetry || retriedScript)) {
+        unavailable();
+        return;
+      }
+
+      platformScript?.removeEventListener("error", unavailable);
+      window.clearTimeout(timeout);
+      platformScript = existingScript;
+      if (scriptFailed) {
+        // One fresh request on subsequent user intent after a network failure.
+        // A slow but loaded platform is not restarted or initialized twice.
+        retriedScript = true;
+        platformScript?.remove();
+        platformScript = undefined;
+      }
+
+      started = true;
+      preconnectToElfsight();
+      formShell!.classList.remove("has-error");
+      formShell!.setAttribute("aria-busy", "true");
+      const loadingMessage = formShell!.querySelector("#form-loading p");
+      if (loadingMessage) loadingMessage.textContent = LOADING_MESSAGE;
+      timeout = window.setTimeout(unavailable, 20_000);
+
       const needsScript = !platformScript;
       if (!platformScript) {
         platformScript = document.createElement("script");
         platformScript.src = PLATFORM_URL;
         platformScript.async = true;
       }
+      watchPlatformScript(platformScript);
       platformScript.addEventListener("error", unavailable);
       if (needsScript) document.head.appendChild(platformScript);
     }
 
     const ctas = document.querySelectorAll<HTMLElement>("[data-cta]");
+    function warmForm() {
+      loadForm(true);
+    }
     function handleCta(event: Event) {
-      loadForm();
+      loadForm(true);
       const cta = event.currentTarget as HTMLElement;
       const dataLayer = (window as Window & { dataLayer?: unknown }).dataLayer;
       // A CTA click expresses intent; it is never a completed-lead event.
@@ -90,27 +166,20 @@ export default function CampaignEffects() {
         });
       }
     }
-    ctas.forEach((cta) => cta.addEventListener("click", handleCta));
+    ctas.forEach((cta) => {
+      cta.addEventListener("pointerenter", warmForm);
+      cta.addEventListener("focus", warmForm);
+      cta.addEventListener("click", handleCta);
+    });
 
     function handleHashChange() {
-      if (window.location.hash === "#offert") loadForm();
+      if (window.location.hash === "#offert") loadForm(true);
     }
     window.addEventListener("hashchange", handleHashChange);
 
     if (hasForm()) ready();
 
     if ("IntersectionObserver" in window) {
-      formObserver = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) {
-            loadForm();
-            formObserver?.disconnect();
-          }
-        },
-        { rootMargin: "0px", threshold: 0 },
-      );
-      formObserver.observe(formShell);
-
       if (mobileBar) {
         barObserver = new IntersectionObserver(
           ([entry]) => {
@@ -122,20 +191,47 @@ export default function CampaignEffects() {
         );
         barObserver.observe(formShell);
       }
-    } else {
-      loadForm();
     }
+
+    // Let the initial content paint before warming connections or starting
+    // automatic near-viewport loading. Direct visitor intent remains immediate.
+    firstFrame = window.requestAnimationFrame(() => {
+      secondFrame = window.requestAnimationFrame(() => {
+        if (!active) return;
+        preconnectToElfsight();
+        if ("IntersectionObserver" in window) {
+          formObserver = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((entry) => entry.isIntersecting)) {
+                loadForm();
+                formObserver?.disconnect();
+              }
+            },
+            { rootMargin: "120px 0px", threshold: 0 },
+          );
+          formObserver.observe(formShell!);
+        } else {
+          loadForm();
+        }
+      });
+    });
 
     handleHashChange();
 
     return () => {
       active = false;
       window.clearTimeout(timeout);
+      if (firstFrame !== undefined) window.cancelAnimationFrame(firstFrame);
+      if (secondFrame !== undefined) window.cancelAnimationFrame(secondFrame);
       mutationObserver.disconnect();
       formObserver?.disconnect();
       barObserver?.disconnect();
       platformScript?.removeEventListener("error", unavailable);
-      ctas.forEach((cta) => cta.removeEventListener("click", handleCta));
+      ctas.forEach((cta) => {
+        cta.removeEventListener("pointerenter", warmForm);
+        cta.removeEventListener("focus", warmForm);
+        cta.removeEventListener("click", handleCta);
+      });
       window.removeEventListener("hashchange", handleHashChange);
       if (mobileBar) {
         mobileBar.classList.toggle("is-hidden", initialBarHidden);

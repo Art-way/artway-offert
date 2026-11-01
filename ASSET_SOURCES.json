@@ -60,5 +60,141 @@
     "license": "dm-sans-OFL.txt",
     "weights": "400 700",
     "sourcePage": "https://fonts.google.com/specimen/DM+Sans"
+  },
+  {
+    "file": "hero-trucks-800.webp",
+    "width": 800,
+    "height": 370,
+    "bytes": 29578,
+    "source": "https://artway.se/artway/hero-move.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 800px; WebP quality58. Original company photograph, no content alterations."
+  },
+  {
+    "file": "hero-trucks-960.webp",
+    "width": 960,
+    "height": 444,
+    "bytes": 41544,
+    "source": "https://artway.se/artway/hero-move.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 960px; WebP quality58. Original company photograph, no content alterations."
+  },
+  {
+    "file": "hero-trucks-800.avif",
+    "width": 800,
+    "height": 370,
+    "bytes": 18612,
+    "source": "https://artway.se/artway/hero-move.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 800px; AVIF quality46. Original company photograph, no content alterations."
+  },
+  {
+    "file": "hero-trucks-960.avif",
+    "width": 960,
+    "height": 444,
+    "bytes": 26069,
+    "source": "https://artway.se/artway/hero-move.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 960px; AVIF quality46. Original company photograph, no content alterations."
+  },
+  {
+    "file": "team-640.webp",
+    "width": 640,
+    "height": 296,
+    "bytes": 20922,
+    "source": "https://artway.se/artway/team-at-work.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 640px; WEBP compressed. Original company photograph, no content alterations."
+  },
+  {
+    "file": "team-640.avif",
+    "width": 640,
+    "height": 296,
+    "bytes": 10585,
+    "source": "https://artway.se/artway/team-at-work.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 640px; AVIF compressed. Original company photograph, no content alterations."
+  },
+  {
+    "file": "careful-packing-360.webp",
+    "width": 360,
+    "height": 640,
+    "bytes": 24520,
+    "source": "https://artway.se/artway/truck-secured-furniture.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 360px; WEBP compressed. Original company photograph, no content alterations."
+  },
+  {
+    "file": "careful-packing-360.avif",
+    "width": 360,
+    "height": 640,
+    "bytes": 11691,
+    "source": "https://artway.se/artway/truck-secured-furniture.jpg",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized to 360px; AVIF compressed. Original company photograph, no content alterations."
+  },
+  {
+    "file": "logo-dark-320.webp",
+    "width": 320,
+    "height": 79,
+    "bytes": 9906,
+    "source": "https://artway.se/artway/logo.png",
+    "sourcePage": "https://artway.se/",
+    "derivedFrom": "Official Artway white-letter/green-icon logo; no official dark version located on main or offert site.",
+    "transformation": "Only near-white neutral lettering pixels recolored to #123c31, retaining original green icon and transparency; resized to 320px.",
+    "verification": {
+      "nearWhitePixelsRecolored": 84946,
+      "greenPixelsPreserved": 115148
+    }
+  },
+  {
+    "file": "logo-dark-384.webp",
+    "width": 384,
+    "height": 94,
+    "bytes": 12896,
+    "source": "https://artway.se/artway/logo.png",
+    "sourcePage": "https://artway.se/",
+    "derivedFrom": "Official Artway white-letter/green-icon logo; no official dark version located on main or offert site.",
+    "transformation": "Only near-white neutral lettering pixels recolored to #123c31, retaining original green icon and transparency; resized to 384px.",
+    "verification": {
+      "nearWhitePixelsRecolored": 84946,
+      "greenPixelsPreserved": 115148
+    }
+  },
+  {
+    "file": "logo-dark.png",
+    "width": 384,
+    "height": 94,
+    "bytes": 8474,
+    "source": "https://artway.se/artway/logo.png",
+    "sourcePage": "https://artway.se/",
+    "transformation": "384px PNG fallback of logo-dark-384: near-white neutral lettering to #123c31, original green icon and alpha retained."
+  },
+  {
+    "file": "logo-white-320.webp",
+    "width": 320,
+    "height": 79,
+    "bytes": 10082,
+    "source": "https://artway.se/artway/logo.png",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized official white-letter/green-icon logo to320px; WebP quality86; no color changes."
+  },
+  {
+    "file": "logo-official-offert.webp",
+    "width": 750,
+    "height": 229,
+    "bytes": 17810,
+    "source": "https://media.swipepages.com/2024/7/5fb2a15e53cd1c0023c251be/offerter-fran-artway-750.webp",
+    "sourcePage": "https://offert.artway.se/",
+    "note": "Official old offert logo inspected; entirely white artwork. Retained for provenance; not the preferred new header asset."
+  },
+  {
+    "file": "logo-white-320.png",
+    "width": 320,
+    "height": 79,
+    "bytes": 6899,
+    "source": "https://artway.se/artway/logo.png",
+    "sourcePage": "https://artway.se/",
+    "transformation": "Resized official white-letter/green-icon logo to320px; palette PNG optimized; original white lettering, green icon and transparency retained."
   }
 ]
