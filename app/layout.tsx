@@ -12,9 +12,9 @@ const dmSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://artway-offert-drab.vercel.app"),
-  title: "Flyttfirma i Helsingborg – Flytthjälp från 499 kr/tim | Artway AB",
+  title: "Flyttfirma i Helsingborg – Få en fri offert | Artway AB",
   description:
-    "Flytthjälp från 499 kr/timme inkl. moms med lätt lastbil och två medarbetare. Artway hjälper dig med flytt, packning och flyttstädning. Begär en fri offert.",
+    "Flytt, packning och flyttstädning med Artways eget team i Helsingborg. Berätta om din flytt och få en kostnadsfri offert utan bindning.",
   robots: { index: false, follow: false },
   icons: { icon: { url: "/assets/favicon.png", type: "image/png" } },
   openGraph: {

@@ -335,10 +335,11 @@ h1 > span {
   margin-top: 3px;
 }
 .hero-price strong > span {
+  display: block;
   font-size: 11px;
   letter-spacing: 0;
   font-weight: 400;
-  margin-left: 3px;
+  margin-top: 3px;
 }
 .hero-price > .icon {
   width: 17px;
@@ -1283,15 +1284,7 @@ details[open] .plus:after {
 .footer-legal > span {
   margin-right: auto;
 }
-.footer-legal > button {
-  border: 0;
-  background: none;
-  color: inherit;
-  padding: 0;
-  font-size: inherit;
-}
-.footer-legal > a:hover,
-.footer-legal > button:hover {
+.footer-legal > a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -1304,62 +1297,6 @@ details[open] .plus:after {
 .faq-section {
   content-visibility: auto;
   contain-intrinsic-size: auto 650px;
-}
-.cookie-panel {
-  position: fixed;
-  z-index: 60;
-  bottom: 20px;
-  left: 20px;
-  width: min(370px, calc(100% - 40px));
-  background: white;
-  border: 1px solid #ccd9c2;
-  border-radius: 12px;
-  box-shadow: 0 8px 35px #25432a25;
-  padding: 19px 20px;
-  color: var(--ink);
-}
-.cookie-panel h2,
-.cookie-panel h3 {
-  font-size: 15px;
-  letter-spacing: -0.02em;
-  font-weight: 600;
-  line-height: 1.4;
-  margin: 0 0 7px;
-}
-.cookie-panel p {
-  font-size: 11px;
-  color: #4f6251;
-  line-height: 1.7;
-  margin: 0;
-}
-.cookie-panel a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.cookie-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
-.cookie-button {
-  min-height: 40px;
-  flex: 1;
-  border: 1px solid #bfcfba;
-  border-radius: 6px;
-  background: #fff;
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 10px 14px;
-}
-.cookie-accept {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
-}
-.cookie-button:hover {
-  background: #eaf1e3;
-  color: var(--ink);
 }
 @container quote (max-width:400px) {
   .form-shell [class*="FieldsGrid__ButtonsGroup"]:has(> button:nth-child(2)) {
@@ -2193,9 +2130,6 @@ details[open] .plus:after {
     width: 100%;
     margin-right: 0;
   }
-  .footer-legal > button {
-    min-height: 25px;
-  }
   .mobile-bar {
     display: flex;
     position: fixed;
@@ -2234,28 +2168,6 @@ details[open] .plus:after {
   .mobile-call > .icon {
     width: 18px;
     height: 18px;
-  }
-  .cookie-panel {
-    bottom: calc(83px + env(safe-area-inset-bottom));
-    left: 14px;
-    width: calc(100% - 28px);
-    padding: 16px 17px;
-    border-radius: 10px;
-  }
-  .cookie-panel h2,
-  .cookie-panel h3 {
-    font-size: 14px;
-  }
-  .cookie-panel p {
-    font-size: 10px;
-    line-height: 1.7;
-  }
-  .cookie-actions {
-    margin-top: 12px;
-  }
-  .cookie-button {
-    min-height: 42px;
-    font-size: 12px;
   }
 }
 @media (max-width: 360px) {

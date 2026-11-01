@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import CampaignEffects from "./components/CampaignEffects";
-import CampaignConsent from "./components/CampaignConsent";
+import CampaignTracking from "./components/CampaignTracking";
 import { Icon, IconLibrary } from "./components/Icon";
 import { companySchema } from "./company-schema";
 import { company, prices, reviews, faqs } from "./content";
@@ -196,14 +196,15 @@ export default function HomePage() {
                 Flytt, packning och flyttstädning med ett eget team. Välj den
                 hjälp du behöver och få en offert utan bindning.
               </p>
-              <a className="hero-price" href="#priser">
+              <a className="hero-price" href="#offert" data-cta="hero-value">
                 <span className="price-icon">
                   <Icon name="truck" />
                 </span>
                 <span>
-                  <small>LÄTT LASTBIL + 2 MEDARBETARE</small>
+                  <small>KOSTNADSFRITT &amp; UTAN BINDNING</small>
                   <strong>
-                    Från 499 <span>kr/timme inkl. moms</span>
+                    Offert för just din flytt
+                    <span>Anpassad efter dina behov</span>
                   </strong>
                 </span>
                 <Icon name="arrow" />
@@ -285,8 +286,8 @@ export default function HomePage() {
               </h2>
             </div>
             <p>
-              Här är våra ordinarie priser inklusive moms. Din offert anpassas
-              efter adresser, omfattning och tillval.
+              Här är prisuppgifter från Artways prislista, inklusive moms.
+              Din offert anpassas efter adresser, omfattning och tillval.
             </p>
           </div>
           <div className="price-grid">
@@ -300,7 +301,7 @@ export default function HomePage() {
                     <Icon name={price.icon} />
                   </span>
                   <p>{price.label}</p>
-                  {price.featured && <span className="price-tag">Från</span>}
+                  {price.featured && <span className="price-tag">Prislista</span>}
                 </div>
                 <h3>{price.title}</h3>
                 <div className="price-value">
@@ -667,9 +668,6 @@ export default function HomePage() {
           </div>
           <div className="footer-legal">
             <span>© 2026 Artway AB</span>
-            <button type="button" data-cookie-settings>
-              Cookieinställningar
-            </button>
             <a
               href="https://artway.se/integritetspolicy/"
               target="_blank"
@@ -699,7 +697,7 @@ export default function HomePage() {
         <QuoteButton location="mobile-bar">Få fri offert</QuoteButton>
       </div>
       <CampaignEffects />
-      <CampaignConsent />
+      <CampaignTracking />
     </>
   );
 }
