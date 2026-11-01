@@ -1,0 +1,8 @@
+node_modules/
+.openai/
+.sites-checkout/
+.sites-runtime/
+output/
+.playwright-cli/
+*.tar.gz
+*.log

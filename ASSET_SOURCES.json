@@ -1,0 +1,64 @@
+[
+  {
+    "height": 308,
+    "file": "reco-2026.svg",
+    "sourcePage": "https://www.reco.se/artway-ab-helsingborg",
+    "source": "https://widget.reco.se/badge/2026/4576958.js",
+    "width": 308,
+    "bytes": 14610
+  },
+  {
+    "file": "reco-logo.svg",
+    "sourcePage": "https://www.reco.se/artway-ab-helsingborg",
+    "source": "https://www.reco.se/assets/images/logo.svg",
+    "bytes": 2183
+  },
+  {
+    "bytes": 64426,
+    "sourcePage": "https://artway.se/",
+    "source": "https://artway.se/_next/image/?url=%2Fartway%2Fhero-move.jpg&w=1200&q=55",
+    "width": 1200,
+    "file": "hero-trucks.webp",
+    "height": 554
+  },
+  {
+    "bytes": 19810,
+    "sourcePage": "https://artway.se/",
+    "source": "https://artway.se/_next/image/?url=%2Fartway%2Fhero-move.jpg&w=640&q=55",
+    "width": 640,
+    "file": "hero-trucks-small.webp",
+    "height": 296
+  },
+  {
+    "bytes": 20304,
+    "sourcePage": "https://artway.se/",
+    "source": "https://artway.se/_next/image/?url=%2Fartway%2Flogo.png&w=640&q=75",
+    "width": 640,
+    "file": "logo.webp",
+    "height": 157
+  },
+  {
+    "bytes": 75508,
+    "sourcePage": "https://artway.se/",
+    "source": "https://artway.se/artway/team-at-work.jpg",
+    "width": 1200,
+    "file": "team.webp",
+    "height": 554
+  },
+  {
+    "bytes": 89738,
+    "sourcePage": "https://artway.se/",
+    "source": "https://artway.se/artway/truck-secured-furniture.jpg",
+    "width": 600,
+    "file": "careful-packing.webp",
+    "height": 1067
+  },
+  {
+    "file": "dm-sans-latin.woff2",
+    "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+    "bytes": 36932,
+    "license": "dm-sans-OFL.txt",
+    "weights": "400 700",
+    "sourcePage": "https://fonts.google.com/specimen/DM+Sans"
+  }
+]
