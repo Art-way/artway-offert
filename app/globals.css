@@ -255,24 +255,52 @@ svg {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.17fr) minmax(0, 1fr);
-  gap: 66px;
+  grid-template-rows: auto 1fr;
+  column-gap: 66px;
+  row-gap: 28px;
   align-items: start;
   padding-block: 52px 60px;
 }
 .hero-story {
   min-width: 0;
+  grid-column: 1;
+  grid-row: 1;
 }
-.hero-story > .eyebrow {
+.hero > .quote-panel {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.hero > .hero-photo {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+}
+.hero-original .hero-story > .eyebrow {
   display: flex;
   align-items: center;
   gap: 11px;
+}
+.hero-original h1 .hero-city {
+  color: inherit;
+}
+.hero-experiment {
+  --artway-hero-variant: a;
+}
+.hero-experiment .experiment-challenger {
+  display: none;
+}
+.hero-original h1 {
+  margin-top: 19px;
+}
+.hero-original .quote-heading h2 {
+  margin-top: 9px;
 }
 h1 {
   font-size: clamp(46px, 4.1vw, 60px);
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: -0.04em;
-  margin-top: 19px;
+  margin-top: 0;
 }
 h1 > span {
   color: var(--green);
@@ -370,7 +398,7 @@ h1 > span {
   align-items: center;
   gap: 20px;
   margin-top: 25px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 .mini-rating {
   display: flex;
@@ -502,7 +530,7 @@ h1 > span {
   font-size: 31px;
   letter-spacing: -0.043em;
   line-height: 1.2;
-  margin-top: 9px;
+  margin-top: 0;
   font-weight: 500;
 }
 .quote-heading > p:not(.eyebrow) {
@@ -1382,7 +1410,7 @@ details[open] .plus:after {
     width: min(1320px, calc(100% - 120px));
   }
   .hero {
-    gap: 90px;
+    column-gap: 90px;
   }
   h1 {
     font-size: 64px;
@@ -1402,7 +1430,7 @@ details[open] .plus:after {
     display: none;
   }
   .hero {
-    gap: 36px;
+    column-gap: 36px;
     grid-template-columns: 1.05fr 1fr;
   }
   h1 {
@@ -1592,8 +1620,24 @@ details[open] .plus:after {
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 30px;
+    grid-template-rows: none;
+    gap: 24px;
     padding-block: 31px 34px;
+  }
+  .hero > .hero-story,
+  .hero > .quote-panel,
+  .hero > .hero-photo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .hero-original > .hero-story {
+    grid-row: 1;
+  }
+  .hero-original > .hero-photo {
+    grid-row: 2;
+  }
+  .hero-original > .quote-panel {
+    grid-row: 3;
   }
   .hero-section:before {
     width: 400px;
@@ -1612,7 +1656,7 @@ details[open] .plus:after {
   }
   h1 {
     font-size: clamp(38px, 9.4vw, 54px);
-    margin-top: 18px;
+    margin-top: 0;
     line-height: 1.1;
   }
   .hero-description {
@@ -1669,7 +1713,7 @@ details[open] .plus:after {
     gap: 15px;
     max-width: 410px;
     margin-top: 24px;
-    margin-bottom: 23px;
+    margin-bottom: 0;
   }
   .mini-rating {
     gap: 9px;
@@ -1740,7 +1784,7 @@ details[open] .plus:after {
   .quote-heading h2 {
     font-size: 29px;
     line-height: 1.17;
-    margin-top: 9px;
+    margin-top: 0;
   }
   .quote-heading > p:not(.eyebrow) {
     font-size: 16px;

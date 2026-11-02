@@ -1,0 +1,42 @@
+/* Paste this stylesheet into the FigPii challenger variation's CSS field.
+   Use an A/B Test on https://offert.artway.se/, not a Split URL Test.
+   FigPii controls assignment; these rules only change the assigned view.
+   Keep the shared form, widget ID and delivery integration untouched. */
+
+#main .hero-experiment {
+  --artway-hero-variant: b;
+}
+
+#main .hero-experiment .experiment-control {
+  display: none;
+}
+
+#main .hero-experiment .experiment-challenger {
+  display: inline;
+}
+
+#main .hero-experiment h1 {
+  margin-top: 0;
+}
+
+#main .hero-experiment h1 .hero-city {
+  color: var(--green);
+}
+
+#main .hero-experiment .quote-heading h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  #main .hero-experiment > .hero-story {
+    grid-row: 1;
+  }
+
+  #main .hero-experiment > .quote-panel {
+    grid-row: 2;
+  }
+
+  #main .hero-experiment > .hero-photo {
+    grid-row: 3;
+  }
+}

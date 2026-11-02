@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import Script from "next/script";
+import { figPiiBootstrap } from "./figpii";
 import "./globals.css";
 
 const dmSans = localFont({
@@ -32,7 +34,12 @@ export const viewport: Viewport = { themeColor: "#f5f7eb" };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="sv" className={dmSans.variable}>
-      <body>{children}</body>
+      <body>
+        <Script id="artway-figpii" strategy="beforeInteractive">
+          {figPiiBootstrap}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
