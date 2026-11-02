@@ -455,16 +455,26 @@ h1 > span {
   width: 100%;
   min-width: 0;
   background: white;
-  border: 1px solid #e0e7d8;
+  border: 2px solid #91aa98;
+  border-top: 5px solid var(--green);
   border-radius: 19px;
-  padding: 29px 27px 21px;
-  box-shadow: 0 12px 45px #2b542414;
+  padding: 0;
+  box-shadow: 0 16px 44px #173d3121, 0 2px 6px #173d310d;
   scroll-margin-top: 25px;
   container-name: quote;
   container-type: inline-size;
 }
 .quote-heading {
   position: relative;
+  padding: 26px 26px 21px;
+  background: var(--mint);
+  border-bottom: 1px solid #cfddcb;
+  border-radius: 16px 16px 0 0;
+}
+.quote-body {
+  padding: 22px 26px 21px;
+  background: white;
+  border-radius: 0 0 16px 16px;
 }
 .quote-icon {
   width: 41px;
@@ -500,7 +510,8 @@ h1 > span {
   align-items: center;
   gap: 6px;
   color: #425f32;
-  background: #eff5e6;
+  background: #fff;
+  border: 1px solid #cfddcb;
   border-radius: 5px;
   padding: 9px 10px;
   font-size: 10px;
@@ -515,7 +526,7 @@ h1 > span {
   min-width: 0;
   position: relative;
   min-height: 500px;
-  margin-top: 14px;
+  margin-top: 0;
 }
 .form-shell.is-ready {
   min-height: 0;
@@ -1411,8 +1422,11 @@ details[open] .plus:after {
     width: 24px;
     height: 24px;
   }
-  .quote-panel {
-    padding: 25px 21px 20px;
+  .quote-heading {
+    padding: 24px 20px 19px;
+  }
+  .quote-body {
+    padding: 20px;
   }
   .quote-heading h2 {
     font-size: 28px;
@@ -1666,9 +1680,17 @@ details[open] .plus:after {
     line-height: 1.5;
   }
   .quote-panel {
-    padding: 24px 20px 19px;
     border-radius: 15px;
+    box-shadow: 0 8px 26px #173d311a;
     scroll-margin-top: 18px;
+  }
+  .quote-heading {
+    padding: 22px 19px 18px;
+    border-radius: 12px 12px 0 0;
+  }
+  .quote-body {
+    padding: 20px 19px 18px;
+    border-radius: 0 0 12px 12px;
   }
   .quote-icon {
     width: 36px;
@@ -2233,7 +2255,8 @@ details[open] .plus:after {
   .hero-ratings {
     gap: 8px;
   }
-  .quote-panel {
+  .quote-heading,
+  .quote-body {
     padding-inline: 16px;
   }
   .quote-heading h2 {

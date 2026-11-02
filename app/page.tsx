@@ -96,46 +96,48 @@ function QuotePanel() {
           <Icon name="check" /> Kostnadsfritt · Ingen bindande bokning
         </span>
       </div>
-      <div id="form-shell" className="form-shell" aria-busy="true">
-        <div id="form-loading" className="form-loading" role="status">
-          <span className="loading-line" />
-          <p>Förbereder ditt offertformulär…</p>
+      <div className="quote-body">
+        <div id="form-shell" className="form-shell" aria-busy="true">
+          <div id="form-loading" className="form-loading" role="status">
+            <span className="loading-line" />
+            <p>Förbereder ditt offertformulär…</p>
+          </div>
+          <div
+            className="elfsight-app-47186b70-4c2e-4d1e-9fc1-4ada8aabc106"
+            data-elfsight-app-lazy=""
+          />
         </div>
-        <div
-          className="elfsight-app-47186b70-4c2e-4d1e-9fc1-4ada8aabc106"
-          data-elfsight-app-lazy=""
-        />
-      </div>
-      <p className="form-help">
-        Problem med formuläret?{" "}
-        <a
-          href="https://offert.artway.se/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Öppna det här ↗
-        </a>{" "}
-        eller ring <a href={company.phoneHref}>{company.phone}</a>.
-      </p>
-      <p className="privacy-note">
-        <Icon name="shield" />
-        <span>
-          Vi använder dina uppgifter för din förfrågan.{" "}
+        <p className="form-help">
+          Problem med formuläret?{" "}
           <a
-            href="https://artway.se/integritetspolicy/"
+            href="https://offert.artway.se/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Läs om personuppgifter ↗
-          </a>
-        </span>
-      </p>
-      <noscript>
-        <p className="noscript-note">
-          JavaScript behövs för formuläret. Ring{" "}
-          <a href={company.phoneHref}>{company.phone}</a> så hjälper vi dig.
+            Öppna det här ↗
+          </a>{" "}
+          eller ring <a href={company.phoneHref}>{company.phone}</a>.
         </p>
-      </noscript>
+        <p className="privacy-note">
+          <Icon name="shield" />
+          <span>
+            Vi använder dina uppgifter för din förfrågan.{" "}
+            <a
+              href="https://artway.se/integritetspolicy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Läs om personuppgifter ↗
+            </a>
+          </span>
+        </p>
+        <noscript>
+          <p className="noscript-note">
+            JavaScript behövs för formuläret. Ring{" "}
+            <a href={company.phoneHref}>{company.phone}</a> så hjälper vi dig.
+          </p>
+        </noscript>
+      </div>
     </aside>
   );
 }
